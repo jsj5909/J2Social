@@ -138,11 +138,15 @@
                         <subviews>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="f3a-hl-Xh8" customClass="FancyView" customModule="J2_Social" customModuleProvider="target">
                                 <subviews>
-                                    <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="sign-out" translatesAutoresizingMaskIntoConstraints="NO" id="wR2-KE-to8">
+                                    <imageView contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="sign-out" translatesAutoresizingMaskIntoConstraints="NO" id="wR2-KE-to8">
+                                        <gestureRecognizers/>
                                         <constraints>
                                             <constraint firstAttribute="width" constant="45" id="1ag-1o-7tV"/>
                                             <constraint firstAttribute="height" constant="38" id="gCR-9O-7jz"/>
                                         </constraints>
+                                        <connections>
+                                            <outletCollection property="gestureRecognizers" destination="r5X-5D-Now" appends="YES" id="Rc7-rk-dfm"/>
+                                        </connections>
                                     </imageView>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Feed" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="7kO-YE-huD">
                                         <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="26"/>
@@ -165,6 +169,7 @@
                                         <subviews>
                                             <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="add-image" translatesAutoresizingMaskIntoConstraints="NO" id="Uew-un-z13" customClass="CircleView" customModule="J2_Social" customModuleProvider="target">
                                                 <color key="backgroundColor" red="0.0" green="0.70196078429999997" blue="0.74901960779999999" alpha="1" colorSpace="calibratedRGB"/>
+                                                <gestureRecognizers/>
                                                 <constraints>
                                                     <constraint firstAttribute="width" constant="50" id="27S-oa-048"/>
                                                     <constraint firstAttribute="height" relation="lessThanOrEqual" constant="50" id="rZQ-Er-UzA"/>
@@ -307,6 +312,11 @@
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Pi6-V3-Y7J" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <tapGestureRecognizer id="r5X-5D-Now">
+                    <connections>
+                        <action selector="signOutTapped:" destination="geF-Fb-wjJ" id="wQZ-E5-8mk"/>
+                    </connections>
+                </tapGestureRecognizer>
             </objects>
             <point key="canvasLocation" x="988" y="129.98500749625188"/>
         </scene>

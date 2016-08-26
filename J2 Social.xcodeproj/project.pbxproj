@@ -15,6 +15,7 @@
 		18B3FC431D67925B00396549 /* FeedVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18B3FC421D67925B00396549 /* FeedVC.swift */; };
 		18BA04BB1D6C9FD3009D9B40 /* CircleView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18BA04BA1D6C9FD3009D9B40 /* CircleView.swift */; };
 		18BA04BD1D6CFC46009D9B40 /* PostCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18BA04BC1D6CFC46009D9B40 /* PostCell.swift */; };
+		18BA04C01D709276009D9B40 /* DataService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18BA04BF1D709276009D9B40 /* DataService.swift */; };
 		18D47D6C1D62AFDA00FBB775 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18D47D6B1D62AFDA00FBB775 /* AppDelegate.swift */; };
 		18D47D6E1D62AFDA00FBB775 /* SignInVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18D47D6D1D62AFDA00FBB775 /* SignInVC.swift */; };
 		18D47D711D62AFDA00FBB775 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 18D47D6F1D62AFDA00FBB775 /* Main.storyboard */; };
@@ -34,6 +35,7 @@
 		18B3FC421D67925B00396549 /* FeedVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FeedVC.swift; sourceTree = "<group>"; };
 		18BA04BA1D6C9FD3009D9B40 /* CircleView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CircleView.swift; sourceTree = "<group>"; };
 		18BA04BC1D6CFC46009D9B40 /* PostCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PostCell.swift; sourceTree = "<group>"; };
+		18BA04BF1D709276009D9B40 /* DataService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DataService.swift; sourceTree = "<group>"; };
 		18D47D681D62AFDA00FBB775 /* J2 Social.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "J2 Social.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		18D47D6B1D62AFDA00FBB775 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		18D47D6D1D62AFDA00FBB775 /* SignInVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignInVC.swift; sourceTree = "<group>"; };
@@ -84,6 +86,14 @@
 			name = Utils;
 			sourceTree = "<group>";
 		};
+		18BA04BE1D70925B009D9B40 /* Services */ = {
+			isa = PBXGroup;
+			children = (
+				18BA04BF1D709276009D9B40 /* DataService.swift */,
+			);
+			name = Services;
+			sourceTree = "<group>";
+		};
 		18D47D5F1D62AFDA00FBB775 = {
 			isa = PBXGroup;
 			children = (
@@ -105,6 +115,7 @@
 		18D47D6A1D62AFDA00FBB775 /* J2 Social */ = {
 			isa = PBXGroup;
 			children = (
+				18BA04BE1D70925B009D9B40 /* Services */,
 				18B3FC411D6631F900396549 /* J2 Social.entitlements */,
 				18B3FC381D651C0800396549 /* Utils */,
 				18D47D811D62BB4900FBB775 /* Controller */,
@@ -285,6 +296,7 @@
 				18D47D6E1D62AFDA00FBB775 /* SignInVC.swift in Sources */,
 				18B3FC3C1D651E6E00396549 /* RoundButton.swift in Sources */,
 				18B3FC401D6521A500396549 /* FancyButton.swift in Sources */,
+				18BA04C01D709276009D9B40 /* DataService.swift in Sources */,
 				18B3FC431D67925B00396549 /* FeedVC.swift in Sources */,
 				18D47D6C1D62AFDA00FBB775 /* AppDelegate.swift in Sources */,
 				18B3FC371D651B7800396549 /* FancyView.swift in Sources */,
