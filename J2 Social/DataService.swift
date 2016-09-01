@@ -11,16 +11,21 @@ import Firebase
 
 
 let DB_BASE = FIRDatabase.database().reference()
+let STORAGE_BASE = FIRStorage.storage().reference()
 
 
 
 class DataService  {
     
     static let ds = DataService() //this line alone creates singleton
-    
+    //DB references
     private var _REF_BASE = DB_BASE
     private var _REF_POSTS = DB_BASE.child("Posts")
     private var _REF_USERS = DB_BASE.child("Users")
+    
+    //storage references
+    private var _REF_POST_IMAGES = STORAGE_BASE.child("post-pics")
+    
     
     var REF_BASE: FIRDatabaseReference
         {
@@ -36,6 +41,10 @@ class DataService  {
         {
         return _REF_USERS
         }
+    
+    var Ref_Post_Images: FIRStorageReference{
+        return _REF_POST_IMAGES
+    }
     
     func createFirebaseDBUser(uid:String, userData:Dictionary<String,String>)
     {
