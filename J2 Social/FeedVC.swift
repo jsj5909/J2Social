@@ -15,11 +15,9 @@ class FeedVC: UIViewController,UITableViewDelegate,UITableViewDataSource,UIImage
     
     
     @IBOutlet weak var tableView:UITableView!
-    
     @IBOutlet weak var imageAdd: CircleView!
-   
-    
     @IBOutlet weak var captionField: FancyField!
+   
     
     var imagePicker:UIImagePickerController!
     
@@ -28,10 +26,13 @@ class FeedVC: UIViewController,UITableViewDelegate,UITableViewDataSource,UIImage
     var imageSelected:Bool = false
     
     var posts = [Post]()
+   
     
     override func viewDidLoad() {
         super.viewDidLoad()
 
+        
+        
         tableView.delegate = self
         tableView.dataSource = self
         
@@ -39,11 +40,12 @@ class FeedVC: UIViewController,UITableViewDelegate,UITableViewDataSource,UIImage
         imagePicker.delegate = self
         imagePicker.allowsEditing = true
         
-        
+        // i think this is creating the problem with multiple cell repeatings
         DataService.ds.REF_POSTS.observe(.value, with:{ (snapshot) in
-            
+            self.posts = []
             if let snapshots = snapshot.children.allObjects as? [FIRDataSnapshot]
             {
+                
                 for snap in snapshots
                 {
                     print("SNAP: \(snap)")
@@ -52,7 +54,7 @@ class FeedVC: UIViewController,UITableViewDelegate,UITableViewDataSource,UIImage
                         let key = snap.key
                         let post = Post(postKey: key, postData: postDict)
                         self.posts.append(post)
-                        
+                        print("JON: \(self.posts.count)")
                     }
                 }
             }
@@ -80,7 +82,7 @@ class FeedVC: UIViewController,UITableViewDelegate,UITableViewDataSource,UIImage
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
        
-        
+       // print("JON: \(posts.count)")
         return posts.count
     }
     
@@ -98,13 +100,14 @@ class FeedVC: UIViewController,UITableViewDelegate,UITableViewDataSource,UIImage
             if let img = FeedVC.imageCache.object(forKey: post.imgURL)
             {
                 cell.configureCell(post: post, img: img)
-                return cell
+               
             }
             else
             {
                 cell.configureCell(post: post)
-                return cell
+              
             }
+            return cell
         }
         else
         {
@@ -148,11 +151,28 @@ class FeedVC: UIViewController,UITableViewDelegate,UITableViewDataSource,UIImage
                 {
                     print("JON:  Image uploaded to Firebase")
                     let downloadURL = metaData?.downloadURL()?.absoluteString
+                    if let url = downloadURL
+                    {
+                    self.postToFirebase(imgUrl: url)
+                    }
                 }
             })
         }
     }
-    
+    func postToFirebase(imgUrl: String)
+    {
+        let post: Dictionary<String,AnyObject> = ["Caption": captionField.text!, "ImageURL": imgUrl, "Likes": 0]
+        
+        let firebasePost = DataService.ds.REF_POSTS.childByAutoId()
+        
+        firebasePost.setValue(post)
+        
+        captionField.text = ""
+        imageSelected = false
+        imageAdd.image = UIImage(named: "add-image")
+        
+        tableView.reloadData()
+    }
     
     
     @IBAction func addImageTapped(_ sender: AnyObject) {
